@@ -10,6 +10,7 @@ Referenced project: link:https://github.com/Evocelot/file-module[file-module]
 
 * mariadb:11.3.2
 * liquibase:mysql
+* docker and docker compose
 
 == Directory Structure
 
@@ -42,7 +43,7 @@ To execute the changelog, run the following command from the root directory of t
 .run-liquibase-changelog
 [source,bash]
 ----
-docker compose -f docker/docker.compose.local.modulebase.liquibase.yml up -d
+docker compose -f docker/docker.compose.local.file-service.liquibase.yml up -d
 ----
 
 === Starting the DBMS Client (optional)

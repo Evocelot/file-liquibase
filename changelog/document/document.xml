@@ -1,0 +1,48 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="01-create-document-table" author="mark.danisovszky">
+        <comment>Creates the document table for storing metadata of the files.</comment>
+        <createTable tableName="document">
+            <column name="X__ID" type="VARCHAR(30)" remarks="Primary key">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk-document"/>
+            </column>
+
+            <column name="name" type="VARCHAR(250)" remarks="The name of the document (used as filename)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extension" type="VARCHAR(10)" remarks="The extension of the document (e.g., png, jpg, pdf)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hash" type="VARCHAR(32)" remarks="MD5 hash of the file">
+                <constraints nullable="false"/>
+            </column>
+            <column name="object_id" type="VARCHAR(100)" remarks="ID of the connected entity (owner of the document)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="system_id" type="VARCHAR(100)" remarks="Document creator system ID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="number" type="INTEGER" remarks="Document number for ordering files">
+                <constraints nullable="true"/>
+            </column>
+            <column name="additional_data" type="VARCHAR(500)" remarks="Additional data for unique queries">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="X__INSDATE" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Creation date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="X__INSUSER" type="VARCHAR(30)" defaultValue="0" remarks="Creator user ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="X__MODDATE" type="TIMESTAMP" remarks="Date of last modification"/>
+            <column name="X__MODUSER" type="VARCHAR(30)" remarks="Modifier user ID"/>
+            <column name="X__VERSION" type="BIGINT" defaultValue="0" remarks="Document version number, incremented by 1 at every modification">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
+

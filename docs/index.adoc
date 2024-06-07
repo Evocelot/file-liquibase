@@ -6,4 +6,38 @@
 :rouge-style: thankful_eyes
 :icons: font
 
-= file-liquibase
+= file-service-liquibase
+
+A Liquibase-based project that contains the necessary scripts
+for creating the database schema for the file-service project.
+
+== Prerequisites
+
+* docker
+* docker compose
+
+== How to use
+
+1 - Start Docker.
+
+2 - Run the following command from the root directory of the project:
+
+.start-local-mariadb
+[source,bash]
+----
+docker compose -f docker/docker.compose.local.mariadb.yml up -d
+----
+
+This command will start the `evocelot-file-service-mariadb` container within the Docker instance,
+which is the instance of the MariaDB database management system defined in the compose file.
+
+3 - Execute the Liquibase changesets by running the following command:
+
+.run-liquibase-changelog
+[source,bash]
+----
+docker compose -f docker/docker.compose.local.file-service.liquibase.yml up -d
+----
+
+This command will execute the `/changelog/liquibase-file-service-changelog.xml` file,
+which creates the necessary database elements for the file-service project.
