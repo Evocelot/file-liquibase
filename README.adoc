@@ -19,10 +19,12 @@ Referenced project: link:https://github.com/Evocelot/file-module[file-module]
 /docs <1>
 /docker <2>
 /changelog <3>
+/release <4>
 ----
 <1> - The source of the project's documentation.
 <2> - Scripts used for running the project in a dockerized environment.
 <3> - The changelog to be executed by Liquibase.
+<4> - The folder that contains the Dockerfile for build the docker image.
 
 == Running the Project
 
