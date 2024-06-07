@@ -45,7 +45,7 @@ which creates the necessary database elements for the file-service project.
 == Building the Docker image
 
 If you want to create the Docker image from the current state,
-you need to run the following command from the `/release` directory:
+you need to run the following command from the root directory:
 
 .build-docker-image
 [source,bash]
@@ -55,5 +55,5 @@ docker build -t <image-name>:<tag-name> .
 
 [NOTE]
 The `<image-name>` and `<tag-name>` variables in the command can be set to anything.
-For example, evocelot-file-service-liquibase:0.1.0
+For example, evocelot/file-service-liquibase:0.1.0
 
